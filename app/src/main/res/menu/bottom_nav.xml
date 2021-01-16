@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/currentWeatherFragment"
+        android:title="Today"
+        android:icon="@drawable/ic_today"/>
+
+    <item
+        android:id="@+id/forecastListFragment"
+        android:title="Forecast"
+        android:icon="@drawable/ic_forecast"/>
+
+    <item
+        android:id="@+id/locationFragment"
+        android:title="Location"
+        android:icon="@drawable/ic_location"/>
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings" />
+
+</menu>
