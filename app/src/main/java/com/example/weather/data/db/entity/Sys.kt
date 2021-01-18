@@ -4,8 +4,8 @@ package com.example.weather.data.db.entity
 import com.google.gson.annotations.SerializedName
 
 data class Sys(
-    @SerializedName("country")
-    val country: String,
+    //@SerializedName("country")
+    //val country: String,
     @SerializedName("id")
     val id: Int,
     @SerializedName("message")
