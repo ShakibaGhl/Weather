@@ -1,15 +1,12 @@
 package com.example.weather.data.db.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
+import androidx.room.*
 import com.example.weather.data.db.entity.CurrentWeatherResponse
 
 
 @Dao
 interface CurrentWeatherDao {
-    @Insert
+    @Insert(onConflict =  OnConflictStrategy.REPLACE)
     fun insertCurrentWeather ( currentWeather : CurrentWeatherResponse)
 
     @Update

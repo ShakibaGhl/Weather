@@ -1,7 +1,6 @@
 package com.example.weather.data.db.entity
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
 
 const val CURRENT_WEATHER_ID = 0
@@ -14,25 +13,28 @@ data class CurrentWeatherResponse(
    // val clouds: Clouds,
         @SerializedName("cod")
         val cod: Int,
-   // @SerializedName("coord")
-   // val coord: Coord,
+        @Embedded( prefix = "coord_")
+        val coord: Coord,
         @SerializedName("dt")
         val dt: Int,
         @SerializedName("id")
         val id: Int,
-        @SerializedName("main")
+        @Embedded( prefix = "main_")
         val main: Main,
         @SerializedName("name")
         val name: String,
-        @SerializedName("sys")
+        @Embedded( prefix = "sys_")
         val sys: Sys,
         @SerializedName("timezone")
         val timezone: Int,
         @SerializedName("visibility")
         val visibility: Int,
+
         @SerializedName("weather")
+        @TypeConverters(DataConverter::class)
         val weather: List<Weather>,
-        @SerializedName("wind")
+
+        @Embedded( prefix = "wind_")
         val wind: Wind
 ) {
     @PrimaryKey(autoGenerate = false)
