@@ -238,12 +238,12 @@ class CurrentWeatherFragment : Fragment() {
         text_view_city.text = currentWeather.name
 
 
-        val calender : Calendar = Calendar.getInstance()
-        val sf : SimpleDateFormat = SimpleDateFormat("HH:mm:ss")
-        val time : String = sf.format((calender.time))
+        val sf : SimpleDateFormat = SimpleDateFormat("hh:mm:ss")
+        sf.timeZone = TimeZone.getTimeZone(currentWeather.id.toString())
+        val time : String = sf.format(((currentWeather.dt)*1000))
         text_view_time.text = time
 
-
+        val calender : Calendar = Calendar.getInstance()
         val sdf : SimpleDateFormat = SimpleDateFormat("MM/DD/yyyy")
         val date : String = sdf.format((calender.time))
         text_view_date.text = date
@@ -265,7 +265,7 @@ class CurrentWeatherFragment : Fragment() {
 
 
 
-            var sdf : SimpleDateFormat = SimpleDateFormat("HH:mm:ss" )
+            var sdf : SimpleDateFormat = SimpleDateFormat("hh:mm:ss" )
             sdf.timeZone = TimeZone.getTimeZone(currentWeather.id.toString())
             var setTime : String = sdf.format(((currentWeather.sys.sunset)*1000))
             var riseTime : String = sdf.format(((currentWeather.sys.sunrise)*1000))
