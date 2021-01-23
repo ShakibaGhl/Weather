@@ -1,11 +1,12 @@
 package com.example.weather.data.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.weather.data.db.entity.CurrentWeatherResponse
 
 
 @Dao
-interface CurrentWeatherDao {
+interface  CurrentWeatherDao {
     @Insert(onConflict =  OnConflictStrategy.REPLACE)
     fun insertCurrentWeather ( currentWeather : CurrentWeatherResponse)
 
@@ -14,5 +15,8 @@ interface CurrentWeatherDao {
 
     @Delete
     fun deleteNote( currentWeather: CurrentWeatherResponse)
+
+    @Query("SELECT * FROM CurrentWeatherResponse")
+    fun getAllData() : CurrentWeatherResponse
 
 }

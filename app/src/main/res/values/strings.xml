@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">weather</string>
+
+    <string name="humidity" formatted="false">%s\u0020\u0020%%</string>
+    <string name="pressure" formatted="false">%s\u0020\u0020hpa</string>
+    <string name="temp" formatted="false">%s°C</string>
+
+    <string name="lat" formatted="false">%s°\u0020\u0020N</string>
+    <string name="lon" formatted="false">%s°\u0020\u0020S</string>
+
+    <string name="speed" formatted="false">%s\u0020\u0020m/s</string>
+
+
 </resources>

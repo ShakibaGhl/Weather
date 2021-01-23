@@ -10,7 +10,7 @@ interface ApiCurrentweather {
 
     @GET("/data/2.5/weather")
     fun getCurrentWeather(
-        @Query("q") cityName: String , @Query("appid") appId : String ,  @Query("units") units : String
+            @Query("lat") lat : Double ,@Query("lon") lon : Double , @Query("appid") appId : String ,  @Query("units") units : String
     ): Call<CurrentWeatherResponse>
 
 }
