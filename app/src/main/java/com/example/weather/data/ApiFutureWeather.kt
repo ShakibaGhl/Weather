@@ -1,6 +1,6 @@
 package com.example.weather.data
 
-import com.example.weather.data.db.entity.future.FutureWeatherResponse
+import com.example.weather.data.db.entity.FutureWeatherResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
