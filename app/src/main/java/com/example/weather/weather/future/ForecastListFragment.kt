@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather.R
 import com.example.weather.data.ApiFutureWeather
 import com.example.weather.data.db.entity.FutureWeatherResponse
+import com.example.weather.data.db.entity.MyList
 import com.example.weather.data.db.network.retrofitFutureWeatherInstance
 import kotlinx.android.synthetic.main.forecast_list_fragment.*
 import retrofit2.Call
@@ -53,7 +54,8 @@ class ForecastListFragment : Fragment() {
 
                     override fun onResponse(call: Call<FutureWeatherResponse>, response: Response<FutureWeatherResponse>) {
                        // forecast_show.text = response.body()?.toString()
-                        response.body()?.let { registerRecyclerView(listOf(it)) }
+                       // response.body()?.let { registerRecyclerView(listOf(it)) }
+                        response.body()?.list?.let { registerRecyclerView(it) }
                         Toast.makeText(requireContext(), "  ", Toast.LENGTH_SHORT).show()
                     }
 
@@ -62,10 +64,10 @@ class ForecastListFragment : Fragment() {
 
 
 
-    private fun registerRecyclerView(forecastResponse: List<FutureWeatherResponse>) {
+    private fun registerRecyclerView(items: List<MyList>) {
 
         recyclerview_forecastList.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL, false)
-        recyclerview_forecastList.adapter = ForecastListAdapter(forecastResponse as MutableList<FutureWeatherResponse>)
+        recyclerview_forecastList.adapter = ForecastListAdapter(items as MutableList<MyList>)
 
     }
 

@@ -12,11 +12,12 @@
     <fragment
         android:id="@+id/forecastListFragment"
         android:name="com.example.weather.weather.future.ForecastListFragment"
-        android:label="forecast_list_fragment" >
+        android:label="forecast_list_fragment">
 
     <action
         android:id="@+id/action_list_to_details"
         app:destination="@+id/forecastDetailsFragment"/>
+
     </fragment>
 
     <fragment
