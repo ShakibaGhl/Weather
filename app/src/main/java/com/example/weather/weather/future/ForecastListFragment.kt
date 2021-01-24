@@ -46,7 +46,7 @@ class ForecastListFragment : Fragment() {
                     }
 
                     override fun onResponse(call: Call<FutureWeatherResponse>, response: Response<FutureWeatherResponse>) {
-                        forecast_show.text = response.body()?.city.toString()
+                        forecast_show.text = response.body()?.toString()
                         Toast.makeText(requireContext(), "  ", Toast.LENGTH_SHORT).show()
                     }
 

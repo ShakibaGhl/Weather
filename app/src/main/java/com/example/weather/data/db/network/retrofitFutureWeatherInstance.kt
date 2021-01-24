@@ -11,7 +11,7 @@ object retrofitFutureWeatherInstance {
 
         if (INSTANCE == null) {
             INSTANCE = Retrofit.Builder()
-                    .baseUrl("http://pro.openweathermap.org")
+                    .baseUrl("http://api.openweathermap.org/")
                     .addConverterFactory(GsonConverterFactory.create())
 
                     .build()

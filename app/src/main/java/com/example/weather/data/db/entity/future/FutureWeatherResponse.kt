@@ -19,7 +19,6 @@ data class FutureWeatherResponse(
     @SerializedName("cod")
     val cod: String,
     @SerializedName("list")
-    @TypeConverters(DataConverter::class)
     val list: List<Any>,
     @SerializedName("message")
     val message: Double
