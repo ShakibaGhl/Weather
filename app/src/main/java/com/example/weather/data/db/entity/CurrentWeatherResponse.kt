@@ -31,7 +31,7 @@ data class CurrentWeatherResponse(
         val visibility: Int,
 
         @SerializedName("weather")
-        @TypeConverters(DataConverter::class)
+        @TypeConverters(WeatherListConverter::class)
         val weather: List<Weather>,
 
         @Embedded( prefix = "wind_")

@@ -7,18 +7,21 @@
     <fragment
         android:id="@+id/currentWeatherFragment"
         android:name="com.example.weather.weather.current.CurrentWeatherFragment"
-        android:label="current_weather_fragment" />
+        android:label="current_weather_fragment" >
+
+        <action
+            android:id="@+id/action_current_to_forecast"
+            app:destination="@id/forecastListFragment"/>
+    </fragment>
+
+
+
+
 
     <fragment
         android:id="@+id/forecastListFragment"
         android:name="com.example.weather.weather.future.ForecastListFragment"
-        android:label="forecast_list_fragment">
-
-    <action
-        android:id="@+id/action_list_to_details"
-        app:destination="@+id/forecastDetailsFragment"/>
-
-    </fragment>
+        android:label="forecast_list_fragment"/>
 
     <fragment
         android:id="@+id/forecastDetailsFragment"

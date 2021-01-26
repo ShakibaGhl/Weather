@@ -9,6 +9,6 @@ interface ApiFutureWeather {
 
     @GET("/data/2.5/forecast")
     fun getFutureWeather(
-            @Query("q") cityName: String, @Query("appid") appId : String, @Query("units") units : String
+        @Query("lat") lat : Double ,@Query("lon") lon : Double, @Query("appid") appId : String, @Query("units") units : String
     ): Call<FutureWeatherResponse>
 }

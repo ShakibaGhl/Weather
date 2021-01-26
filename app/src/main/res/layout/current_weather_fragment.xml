@@ -24,11 +24,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="20dp"
             android:layout_above="@+id/button_get_permission"
-            android:text="We Need Your Location Permission To Show Information"
+            android:text="We Need Your Location Permission To Show Weather Information"
             android:textColor="@color/white"/>
 
         <Button
-            android:visibility="visible"
             android:layout_centerInParent="true"
             android:backgroundTint="#2C000000"
             android:layout_width="wrap_content"

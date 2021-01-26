@@ -24,6 +24,7 @@ import com.example.weather.data.db.entity.*
 import com.example.weather.data.db.network.retrofitWeatherInstance
 import com.example.weather.setWeatherIcon
 import kotlinx.android.synthetic.main.current_weather_fragment.*
+import kotlinx.android.synthetic.main.forecast_list_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,6 +42,7 @@ class CurrentWeatherFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.current_weather_fragment, container, false)
+
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -58,15 +60,27 @@ class CurrentWeatherFragment : Fragment() {
 
         button_get_permission.setOnClickListener {
 
-            checkLocationPermission()
+            if(checkLocationPermission()) getCurrentLocation()
+
+
         }
     }
+
+
+//    override fun onResume() {
+//        super.onResume()
+//
+//        getCurrentLocation()
+//    }
 
 
 
 
 
     private fun getCurrentLocation(){
+
+       // view_location_layout.visibility = View.VISIBLE
+       // view_permission_layout.visibility = View.GONE
 
         val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (ActivityCompat.checkSelfPermission(
@@ -146,6 +160,7 @@ class CurrentWeatherFragment : Fragment() {
         } else {
             //permission granted
             view_location_layout.visibility = View.VISIBLE
+            view_permission_layout.visibility = View.GONE
             true
         }
     }
@@ -173,13 +188,13 @@ class CurrentWeatherFragment : Fragment() {
 
                         //Request location updates:
 //                        locationManager.requestLocationUpdates(provider, 400, 1, this)
-                        Toast.makeText(requireContext() , "granted" , Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext() , "Granted" , Toast.LENGTH_SHORT).show()
                         view_location_layout.visibility = View.VISIBLE
                         view_permission_layout.visibility = View.GONE
                         getCurrentLocation()
                     }
                 } else {
-                    Toast.makeText(requireContext() , "denied" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext() , "Denied" , Toast.LENGTH_SHORT).show()
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                     view_location_layout.visibility = View.GONE
@@ -214,7 +229,7 @@ class CurrentWeatherFragment : Fragment() {
                 val lastUpdate = dataBase?.getCurrentWeatherDao()?.getAllData()
                 lastUpdate?.let { updateUi(it) }
                 progressBar.visibility = View.GONE
-                Toast.makeText(requireContext(), "failure", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Failure", Toast.LENGTH_SHORT).show()
             }
 
             @RequiresApi(Build.VERSION_CODES.N)
@@ -237,13 +252,13 @@ class CurrentWeatherFragment : Fragment() {
 
         text_view_city.text = currentWeather.name
 
-
+        val calender : Calendar = Calendar.getInstance()
         val sf : SimpleDateFormat = SimpleDateFormat("hh:mm:ss")
-        sf.timeZone = TimeZone.getTimeZone(currentWeather.id.toString())
-        val time : String = sf.format(((currentWeather.dt)*1000))
+         sf.timeZone = TimeZone.getTimeZone(currentWeather.id.toString())
+         val time : String = sf.format(((currentWeather.dt)*1000))
+       // val time : String = sf.format((calender.time))
         text_view_time.text = time
 
-        val calender : Calendar = Calendar.getInstance()
         val sdf : SimpleDateFormat = SimpleDateFormat("MM/DD/yyyy")
         val date : String = sdf.format((calender.time))
         text_view_date.text = date

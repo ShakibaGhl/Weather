@@ -4,20 +4,22 @@ package com.example.weather.data.db.entity
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
 @Entity
 data class FutureWeatherResponse(
         @PrimaryKey(autoGenerate = true)
-    val id : Int? = null,
+        val id : Int? = null,
         @Embedded( prefix = "city_")
-    val city: City,
+        val city: City,
         @SerializedName("cnt")
-    val cnt: Int,
+        val cnt: Int,
         @SerializedName("cod")
-    val cod: String,
+        val cod: String,
         @SerializedName("list")
-    val list: List<MyList>,
+        @TypeConverters(MyListConverter::class)
+        val list: List<MyList>,
         @SerializedName("message")
-    val message: Double
+        val message: Double
 )

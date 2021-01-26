@@ -6,7 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
-public class DataConverter {
+public class WeatherListConverter {
     @TypeConverter
     fun fromWeatherList(weather: List<Weather?>?): String? {
         if (weather == null) {

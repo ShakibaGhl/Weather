@@ -1,15 +1,15 @@
 package com.example.weather.data.db.entity
 
 import androidx.room.Embedded
+import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.weather.data.db.entity.Coord
-import com.example.weather.data.db.entity.DataConverter
-import com.example.weather.data.db.entity.Main
-import com.example.weather.data.db.entity.Sys
-import com.example.weather.data.db.entity.Weather
 import com.google.gson.annotations.SerializedName
 
-public class MyList (
+data class MyList (
+
+        @PrimaryKey(autoGenerate = true)
+        val id : Int? = null,
+
         @SerializedName("dt")
         val dt: Int,
         @Embedded( prefix = "main_")
@@ -19,7 +19,7 @@ public class MyList (
         val coord: Coord,
 
         @SerializedName("weather")
-        @TypeConverters(DataConverter::class)
+        @TypeConverters(WeatherListConverter::class)
         val weather: List<Weather>,
 
         @Embedded( prefix = "sys_")

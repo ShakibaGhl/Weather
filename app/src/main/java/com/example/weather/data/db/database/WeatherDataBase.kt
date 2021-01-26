@@ -7,14 +7,15 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.weather.data.db.dao.CurrentWeatherDao
 import com.example.weather.data.db.entity.CurrentWeatherResponse
-import com.example.weather.data.db.entity.DataConverter
+import com.example.weather.data.db.entity.WeatherListConverter
 
 
 @Database( entities = [CurrentWeatherResponse ::class] , version = 1)
-@TypeConverters(DataConverter::class)
+@TypeConverters(WeatherListConverter::class)
 abstract class WeatherDataBase : RoomDatabase () {
 
     abstract fun getCurrentWeatherDao() : CurrentWeatherDao
+ //   abstract fun getFutureWeatherDao() : FutureWeatherDao
 
     companion object {
 
@@ -31,6 +32,7 @@ abstract class WeatherDataBase : RoomDatabase () {
             return INSTANCE
         }
     }
+
 
 
 }
